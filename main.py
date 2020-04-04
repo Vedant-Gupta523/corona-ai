@@ -1,21 +1,18 @@
-import math
+# Importing libraries
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVR
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
-import pandas_datareader as web
 
 # Settings
-batch_size = 70
-future_prediction_size = 50
+batch_size = 30
+future_prediction_size = 7
 
 # Get data from csv file
-dataset = pd.read_csv("data.csv")
+dataset = pd.read_csv("test_data.csv")
 
-# Scale data
+# Create scaled/unscaled datasets, divide into train and test data
 scaler = MinMaxScaler(feature_range=(0,1))
 scaled_dataset = []
 unscaled_dataset = []
@@ -69,7 +66,7 @@ future_preds = scaler.inverse_transform(future_preds)
     
 
 # Graphing predictions
-plt.title("S&P 500 Predictions")
+plt.title(str(list(dataset)[-1]) + " Predictions")
 plt.xlabel("Time (Days)")
 plt.ylabel("Share Price")
 plt.plot(range(len(y_pred)), y_pred, color = "orange")
