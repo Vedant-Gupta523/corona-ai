@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # Settings
 batch_size = 30
-future_prediction_size = 7
+future_prediction_size = 30
 
 # Get data from csv file
 dataset = pd.read_csv("test_data.csv")
@@ -71,5 +71,5 @@ plt.xlabel("Time (Days)")
 plt.ylabel("Share Price")
 plt.plot(range(len(y_pred)), y_pred, color = "orange")
 plt.plot(range(len(y_unscaled_test)), y_unscaled_test, linewidth=1)
-plt.plot(range(len(y_pred), len(y_pred) + future_prediction_size), future_preds, color = "red", linestyle = "--")
+plt.plot(range(len(y_pred), len(y_pred) + future_prediction_size), future_preds, color = "red")
 plt.show()
