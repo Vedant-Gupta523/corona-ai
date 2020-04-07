@@ -66,10 +66,10 @@ future_preds = scaler.inverse_transform(future_preds)
     
 
 # Graphing predictions
-plt.title(str(list(dataset)[-1]) + " Predictions")
-plt.xlabel("Time (Days)")
-plt.ylabel("Share Price")
-plt.plot(range(len(y_pred)), y_pred, color = "orange")
-plt.plot(range(len(y_unscaled_test)), y_unscaled_test, linewidth=1)
-plt.plot(range(len(y_pred), len(y_pred) + future_prediction_size), future_preds, color = "red")
+plt.title("COVID-19 Crash Analysis")
+plt.xlabel("Days from Crash")
+plt.ylabel("S&P 500")
+plt.plot([x for x in range(-99, len(y_pred) - 99)], y_pred, color = "orange")
+plt.plot([x for x in range(-99, len(y_pred) - 99)], y_unscaled_test, linewidth=1)
+plt.plot([x for x in range(len(y_pred) - 99, len(y_pred) - 99 + future_prediction_size)] , future_preds, color = "red")
 plt.show()
